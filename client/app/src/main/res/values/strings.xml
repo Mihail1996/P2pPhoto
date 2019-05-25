@@ -1,0 +1,42 @@
+<resources>
+
+    <string name="preference_file_key">p2pPhotoPreferences</string>
+    <string name="app_name">P2pPhoto</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Welcome to P2P Photo</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Welcom to P2PPhoto</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+
+
+    <!-- Strings related to login -->
+    <string name="radioButtonWifi">Wi-fi</string>
+    <string name="radioButtonCloud">Cloud</string>
+    <string name="loginButton">Login</string>
+
+
+    <!-- Strings related to Main Register -->
+    <string name="registerButton">Register</string>
+    <string name="title_activity_welcome">P2PPhoto</string>
+
+
+    <!-- Strings related to Welcome page -->
+
+    <string name="welcome_text">P2PPhoto</string>
+    <string name="title_activity_register">Registration</string>
+    <string name="title_activity_dropbox_link_account">DropboxLinkAccount</string>
+
+    <!-- Strings related to Dropbox page -->
+    <string name="app_key">8ky8792hs6rvysp</string>
+    <string name="link_dropbox_account_button">Link Dropbox Account</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Wifi direct -->
+    <string name="port">10001</string>
+
+
+</resources>

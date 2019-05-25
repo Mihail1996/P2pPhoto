@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_albums"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="My Albums" />
+        <item
+            android:id="@+id/account_info"
+            android:icon="@drawable/ic_info_24dp"
+            android:title="Account Info" />
+        <item
+            android:id="@+id/find_user"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Find User" />
+        <item
+            android:id="@+id/log_app"
+            android:icon="@drawable/ic_log_24dp"
+            android:title="Application log" />
+        <item
+            android:id="@+id/log_server"
+            android:icon="@drawable/ic_log_24dp"
+            android:title="Server Log" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Settings" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logouticon"
+            android:title="Logout" />
+
+    </group>
+</menu>
