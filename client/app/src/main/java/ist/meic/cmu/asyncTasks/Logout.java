@@ -31,7 +31,7 @@ public class Logout extends AsyncTask<Void, Void, Integer> {
     }
 
     private Integer logout() {
-        LoggerFactory.log(this.getClass().getSimpleName()+": Initialized");
+        LoggerFactory.log(this.getClass().getSimpleName() + ": Initialized");
         ServerService service = RetrofitFactory.getServerService();
 
         try {
@@ -45,9 +45,11 @@ public class Logout extends AsyncTask<Void, Void, Integer> {
     }
 
     protected void onPostExecute(Integer integer) {
-        LoggerFactory.log(this.getClass().getSimpleName()+": Finished");
+        LoggerFactory.log(this.getClass().getSimpleName() + ": Finished");
+        String ip = sharedPreferences.getString("ip", null);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
+        editor.putString("ip", ip);
         editor.apply();
         DropboxClientFactory.resetClient();
 

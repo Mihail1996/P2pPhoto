@@ -1,12 +1,16 @@
 package ist.meic.cmu;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.InputType;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import ist.meic.cmu.asyncTasks.AddUserToAlbumTask;
 import ist.meic.cmu.asyncTasks.Ping;
 import ist.meic.cmu.utils.LoggerFactory;
 import ist.meic.cmu.utils.PicassoClient;
@@ -26,14 +31,29 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
         requestPermissions();
         final SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("ip", getString(R.string.local_ip));
-        editor.apply();
-        RetrofitFactory.initServerRetrofit(sharedPref);
-        RetrofitFactory.initDbRetrofit();
+        if (sharedPref.getString("ip", null) == null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Insert Server IP");
+            final EditText input = new EditText(this);
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                String ip = input.getText().toString();
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("ip", "https://" + ip + ":8080");
+                editor.apply();
+                RetrofitFactory.initServerRetrofit(sharedPref);
+                RetrofitFactory.initDbRetrofit();
+            });
+            builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+            builder.show();
+        } else {
+            RetrofitFactory.initServerRetrofit(sharedPref);
+            RetrofitFactory.initDbRetrofit();
+        }
+
         Button login = findViewById(R.id.welcome_login_button);
         Button register = findViewById(R.id.welcome_register_button);
         login.setOnClickListener(view -> {
